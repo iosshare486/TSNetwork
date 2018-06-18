@@ -19,13 +19,13 @@ enum TSRequestMethod : String {
     case tsGet = "GET"
 }
 
-class TSBaseRequest : TSRequestProtocol{
+public class TSBaseRequest : TSRequestProtocol{
     
     var tsBaseUrl: String?
     
     var tsHeaderS: [String : String]?
     
-    required init() { }
+    required public init() { }
     
     //默认请求session NetworkManager内根据BaseRequest修改
     static var sharedSessionManager: Alamofire.SessionManager = {

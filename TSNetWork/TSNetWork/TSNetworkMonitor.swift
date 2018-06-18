@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class TSNetworkMonitor  {
+public class TSNetworkMonitor  {
     let reachability = Reachability()
     //当前网络状态
     var reachabilityStatus : listenerStatus {

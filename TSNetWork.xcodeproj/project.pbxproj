@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8FC7B562C678CAAB5BC566CF /* Pods_TSNetWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCD2BF32B2CEC6B9DE2BF /* Pods_TSNetWork.framework */; };
+		B216424920D3B4CF0015A305 /* TSNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B216424820D3B4CE0015A305 /* TSNetworkMonitor.swift */; };
 		B27A5D2620C532CE00577178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D2520C532CE00577178 /* AppDelegate.swift */; };
 		B27A5D2820C532CE00577178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D2720C532CE00577178 /* ViewController.swift */; };
 		B27A5D2B20C532CE00577178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27A5D2920C532CE00577178 /* Main.storyboard */; };
@@ -14,6 +16,13 @@
 		B27A5D3020C532D000577178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27A5D2E20C532D000577178 /* LaunchScreen.storyboard */; };
 		B27A5D3B20C532D000577178 /* TSNetWorkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D3A20C532D000577178 /* TSNetWorkTests.swift */; };
 		B27A5D4620C532D000577178 /* TSNetWorkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D4520C532D000577178 /* TSNetWorkUITests.swift */; };
+		B27A5D5520C5340000577178 /* TSNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D5420C5340000577178 /* TSNetworkManager.swift */; };
+		B27A5D5920C5738700577178 /* TSNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D5820C5738700577178 /* TSNetworkError.swift */; };
+		B27A5D5B20C7E25600577178 /* TSBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D5A20C7E25600577178 /* TSBaseResponse.swift */; };
+		B27A5D6120C930A300577178 /* TSDemoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D6020C930A300577178 /* TSDemoAPI.swift */; };
+		B27A5D6520C9351100577178 /* TSDemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D6420C9351100577178 /* TSDemoModel.swift */; };
+		B2B9281E20C9672900BD8171 /* TSBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B9281D20C9672900BD8171 /* TSBaseRequest.swift */; };
+		B2B9282020CBC94600BD8171 /* TSCustomDemoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B9281F20CBC94600BD8171 /* TSCustomDemoAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B216424820D3B4CE0015A305 /* TSNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkMonitor.swift; sourceTree = "<group>"; };
 		B27A5D2220C532CE00577178 /* TSNetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSNetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27A5D2520C532CE00577178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27A5D2720C532CE00577178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +57,16 @@
 		B27A5D4120C532D000577178 /* TSNetWorkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSNetWorkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27A5D4520C532D000577178 /* TSNetWorkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetWorkUITests.swift; sourceTree = "<group>"; };
 		B27A5D4720C532D000577178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B27A5D5420C5340000577178 /* TSNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkManager.swift; sourceTree = "<group>"; };
+		B27A5D5820C5738700577178 /* TSNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkError.swift; sourceTree = "<group>"; };
+		B27A5D5A20C7E25600577178 /* TSBaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBaseResponse.swift; sourceTree = "<group>"; };
+		B27A5D6020C930A300577178 /* TSDemoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDemoAPI.swift; sourceTree = "<group>"; };
+		B27A5D6420C9351100577178 /* TSDemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDemoModel.swift; sourceTree = "<group>"; };
+		B2B9281D20C9672900BD8171 /* TSBaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBaseRequest.swift; sourceTree = "<group>"; };
+		B2B9281F20CBC94600BD8171 /* TSCustomDemoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSCustomDemoAPI.swift; sourceTree = "<group>"; };
+		BB779B09499F6F143473C713 /* Pods-TSNetWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSNetWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSNetWork/Pods-TSNetWork.debug.xcconfig"; sourceTree = "<group>"; };
+		CEDDCA96001F57CA406D632E /* Pods-TSNetWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSNetWork.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSNetWork/Pods-TSNetWork.release.xcconfig"; sourceTree = "<group>"; };
+		DCDDCD2BF32B2CEC6B9DE2BF /* Pods_TSNetWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSNetWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FC7B562C678CAAB5BC566CF /* Pods_TSNetWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72101A6E3536A84A86A56F2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCDDCD2BF32B2CEC6B9DE2BF /* Pods_TSNetWork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B27A5D1920C532CE00577178 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +110,8 @@
 				B27A5D3920C532D000577178 /* TSNetWorkTests */,
 				B27A5D4420C532D000577178 /* TSNetWorkUITests */,
 				B27A5D2320C532CE00577178 /* Products */,
+				C685F0E109151CED0241D1FD /* Pods */,
+				72101A6E3536A84A86A56F2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +128,12 @@
 		B27A5D2420C532CE00577178 /* TSNetWork */ = {
 			isa = PBXGroup;
 			children = (
+				B27A5D5320C5330B00577178 /* TSNetWork */,
 				B27A5D2520C532CE00577178 /* AppDelegate.swift */,
+				B27A5D6020C930A300577178 /* TSDemoAPI.swift */,
+				B2B9281F20CBC94600BD8171 /* TSCustomDemoAPI.swift */,
 				B27A5D2720C532CE00577178 /* ViewController.swift */,
+				B27A5D6420C9351100577178 /* TSDemoModel.swift */,
 				B27A5D2920C532CE00577178 /* Main.storyboard */,
 				B27A5D2C20C532D000577178 /* Assets.xcassets */,
 				B27A5D2E20C532D000577178 /* LaunchScreen.storyboard */,
@@ -125,6 +160,27 @@
 			path = TSNetWorkUITests;
 			sourceTree = "<group>";
 		};
+		B27A5D5320C5330B00577178 /* TSNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				B27A5D5420C5340000577178 /* TSNetworkManager.swift */,
+				B27A5D5820C5738700577178 /* TSNetworkError.swift */,
+				B27A5D5A20C7E25600577178 /* TSBaseResponse.swift */,
+				B2B9281D20C9672900BD8171 /* TSBaseRequest.swift */,
+				B216424820D3B4CE0015A305 /* TSNetworkMonitor.swift */,
+			);
+			path = TSNetWork;
+			sourceTree = "<group>";
+		};
+		C685F0E109151CED0241D1FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB779B09499F6F143473C713 /* Pods-TSNetWork.debug.xcconfig */,
+				CEDDCA96001F57CA406D632E /* Pods-TSNetWork.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B27A5D4A20C532D000577178 /* Build configuration list for PBXNativeTarget "TSNetWork" */;
 			buildPhases = (
+				B87B43C408F1DACC8CA204AB /* [CP] Check Pods Manifest.lock */,
 				B27A5D1E20C532CE00577178 /* Sources */,
 				B27A5D1F20C532CE00577178 /* Frameworks */,
 				B27A5D2020C532CE00577178 /* Resources */,
+				33C1806667255C0B2B325F0F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +309,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		33C1806667255C0B2B325F0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TSNetWork/Pods-TSNetWork-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TSNetWork/Pods-TSNetWork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B87B43C408F1DACC8CA204AB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TSNetWork-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B27A5D1E20C532CE00577178 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,6 +359,14 @@
 			files = (
 				B27A5D2820C532CE00577178 /* ViewController.swift in Sources */,
 				B27A5D2620C532CE00577178 /* AppDelegate.swift in Sources */,
+				B216424920D3B4CF0015A305 /* TSNetworkMonitor.swift in Sources */,
+				B27A5D6520C9351100577178 /* TSDemoModel.swift in Sources */,
+				B27A5D5B20C7E25600577178 /* TSBaseResponse.swift in Sources */,
+				B2B9281E20C9672900BD8171 /* TSBaseRequest.swift in Sources */,
+				B27A5D5520C5340000577178 /* TSNetworkManager.swift in Sources */,
+				B27A5D6120C930A300577178 /* TSDemoAPI.swift in Sources */,
+				B27A5D5920C5738700577178 /* TSNetworkError.swift in Sources */,
+				B2B9282020CBC94600BD8171 /* TSCustomDemoAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,16 +537,21 @@
 		};
 		B27A5D4B20C532D000577178 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB779B09499F6F143473C713 /* Pods-TSNetWork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5SY74Q2CEY;
 				INFOPLIST_FILE = TSNetWork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.caiqr.TSUtility.TSNetWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -445,16 +559,21 @@
 		};
 		B27A5D4C20C532D000577178 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEDDCA96001F57CA406D632E /* Pods-TSNetWork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5SY74Q2CEY;
 				INFOPLIST_FILE = TSNetWork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.caiqr.TSUtility.TSNetWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

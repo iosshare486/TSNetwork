@@ -1,6 +1,0 @@
-framework module Pods_TSNetWork {
-  umbrella header "Pods-TSNetWork-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -17,21 +17,21 @@ public protocol TSMoyaAddable : HandyJSON {
 
 public class TSBaseResponse<T : TSMoyaAddable>{
 
-    var code: Int {
+    public var code: Int {
         guard let temp = jsonData["code"] as? Int else {
             return -1
         }
         return temp
     }
     
-    var errorMessage: String? {
+    public var errorMessage: String? {
         guard let temp = jsonData["msg"] as? String else {
             return ""
         }
         return temp
     }
     
-    var jsonData: [String : Any]
+    public var jsonData: [String : Any]
     required public init() {
         jsonData = ["":""]
     }
@@ -51,7 +51,7 @@ public class TSBaseResponse<T : TSMoyaAddable>{
             self.responeObject = JSONDeserializer<T>.deserializeFrom(json: dicString)
         }
     }
-    var responeObject: T! = T()
+    public var responeObject: T! = T()
     
 }
 

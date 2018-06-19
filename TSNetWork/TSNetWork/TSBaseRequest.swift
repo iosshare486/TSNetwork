@@ -10,8 +10,7 @@ import Foundation
 import Alamofire
 
 @objc public protocol TSRequestProtocol {
-    func tsRequestUrl() -> String?
-    func tsRequestHeader() -> [String : String]?
+    
 }
 
 public enum TSRequestMethod : String {
@@ -41,13 +40,13 @@ open class TSBaseRequest : TSRequestProtocol{
     open var parameter: [String:Any]?
     //请求特殊策略域名
     open var particularHost : String?
-}
-
-public extension TSBaseRequest {
-    public func tsRequestUrl() -> String? {
+    //配置请求URL
+    open func tsRequestUrl() -> String? {
         return nil
     }
-    public func tsRequestHeader() -> [String : String]? {
+    //配置请求头
+    open func tsRequestHeader() -> [String : String]? {
         return nil
     }
+    
 }

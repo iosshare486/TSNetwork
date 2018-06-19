@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         api.path = "/app_list"
         api.parameter = ["aaa" : "bbbb"]
         TSNetworkManager<TSDemoModel>.send(api, completion: { (response) in
-            print("\(response.responeObject)")
+            print("\(response.jsonData)")
         }) { (error) in
             print("\(error) ")
             if error.networkType == listenerStatus.tsNoNet {

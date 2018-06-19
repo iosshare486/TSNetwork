@@ -36,8 +36,8 @@ public enum TSNetworkError: Error  {
     case exception(message: String)
 }
 
-extension TSNetworkError {
-    var message: String? {
+public extension TSNetworkError {
+    public var message: String? {
         switch self {
         case let .serverResponse(msg, _):
             return msg
@@ -46,7 +46,7 @@ extension TSNetworkError {
         }
     }
     
-    var code: Int {
+    public var code: Int {
         switch self {
         case let .serverResponse(_, code):
             return code
@@ -55,7 +55,7 @@ extension TSNetworkError {
         }
     }
     
-    var error : URLError? {
+    public var error : URLError? {
         switch self {
         case let .networkResponse(_, _,error):
             return error
@@ -64,7 +64,7 @@ extension TSNetworkError {
         }
     }
     
-    var networkType : listenerStatus? {
+    public var networkType : listenerStatus? {
         switch self {
         default:
             var listenerstatus : listenerStatus?

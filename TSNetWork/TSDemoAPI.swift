@@ -19,14 +19,8 @@ class TSCustomBaseAPI : TSBaseRequest {
            return 10
         }
     }
+    override func tsRequestUrl() -> String? {
+        return nil
+    }
 }
 
-extension TSCustomBaseAPI {
-    override func tsRequestUrl() -> String? {
-        return "http://www.zlrun.cn"
-    }
-    
-    override func tsRequestHeader() -> [String : String]? {
-        return ["aa" : "bb"]
-    }
-}

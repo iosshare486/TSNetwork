@@ -20,7 +20,13 @@ class TSCustomBaseAPI : TSBaseRequest {
         }
     }
     override func tsRequestUrl() -> String? {
-        return nil
+        return "http://www.zlrun.cn"
+    }
+    override func tsRequestHeader() -> [String : String]? {
+        
+        
+        
+        return ["User-Agent" : " Client/10001"]
     }
 }
 

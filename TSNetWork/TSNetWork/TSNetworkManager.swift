@@ -62,7 +62,14 @@ extension TSNetworkManager {
         if var headers : [String : String] = type.tsRequestHeader() {
             //此处可设置httpheaders 同时自定义User-agent
             for e in headers {
-                afHeaders[e.key] = headers[e.key]
+                if e.key == "User-Agent" {
+                    if var ua = afHeaders[e.key] {
+                        ua = ua.appending(headers[e.key]!)
+                        afHeaders[e.key] = ua
+                    }
+                } else {
+                    afHeaders[e.key] = headers[e.key]
+                }
             }
         }
         

@@ -50,6 +50,7 @@ public class TSBaseResponse<T : TSMoyaAddable>{
         if let dicString = resp as? String {
             self.responeObject = JSONDeserializer<T>.deserializeFrom(json: dicString)
         }
+        self.responeObject.objectToModelFinish()
     }
     public var responeObject: T! = T()
     

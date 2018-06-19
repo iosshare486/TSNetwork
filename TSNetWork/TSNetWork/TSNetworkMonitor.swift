@@ -30,7 +30,7 @@ public class TSNetworkMonitor  {
         }
     }
     
-    static let shared = TSNetworkMonitor.init()
+    public static let shared = TSNetworkMonitor.init()
     private init() { }
     //开始网络监听
     public func startNotifier (monitorStatus : @escaping (Bool) -> () ) {

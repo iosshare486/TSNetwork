@@ -11,14 +11,14 @@ import Alamofire
 import HandyJSON
 
 
-class TSNetworkManager<T> where T: TSMoyaAddable {
+public class TSNetworkManager<T> where T: TSMoyaAddable {
     
-    public func send<R: TSBaseRequest>(
+    public class func send<R: TSBaseRequest>(
         _ type: R,
         completion: @escaping ((TSBaseResponse<T>) -> ()),
         error: @escaping (TSNetworkError) -> () )
     {
-        request(type, modelComletion: completion, error: error)
+        TSNetworkManager<T>().request(type, modelComletion: completion, error: error)
     }
     
     // 用来处理只请求一次的栅栏队列
@@ -49,17 +49,17 @@ extension TSNetworkManager {
             return
         }
         //请求url
-        guard type.tsBaseUrl != nil else {
+        guard type.tsRequestUrl() != nil else {
             return
         }
-        let urlString = type.privateHost ?? type.tsBaseUrl!.appending(type.path)
+        let urlString = type.privateHost ?? type.tsRequestUrl()!.appending(type.path)
         guard let _ : URL = URL(string: urlString) else {
             return
         }
         
         //配置请求头
         var afHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        if var headers : [String : String] = type.tsHeaderS {
+        if var headers : [String : String] = type.tsRequestHeader() {
             //此处可设置httpheaders 同时自定义User-agent
             for e in headers {
                 afHeaders[e.key] = headers[e.key]

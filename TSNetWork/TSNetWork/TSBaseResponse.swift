@@ -15,7 +15,7 @@ public protocol TSMoyaAddable : HandyJSON {
     
 }
 
-class TSBaseResponse<T : TSMoyaAddable>{
+public class TSBaseResponse<T : TSMoyaAddable>{
 
     var code: Int {
         guard let temp = jsonData["code"] as? Int else {
@@ -32,7 +32,7 @@ class TSBaseResponse<T : TSMoyaAddable>{
     }
     
     var jsonData: [String : Any]
-    required init() {
+    required public init() {
         jsonData = ["":""]
     }
     init?(data: Any) {
@@ -55,7 +55,7 @@ class TSBaseResponse<T : TSMoyaAddable>{
     
 }
 
-extension TSMoyaAddable {
+public extension TSMoyaAddable {
     
     func objectToModelFinish () {
         

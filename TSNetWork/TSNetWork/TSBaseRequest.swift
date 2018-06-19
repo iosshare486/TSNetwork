@@ -9,21 +9,17 @@
 import Foundation
 import Alamofire
 
-protocol TSRequestProtocol {
-    var tsBaseUrl : String? { get }
-    var tsHeaderS : [String : String]? { get }
+@objc public protocol TSRequestProtocol {
+    func tsRequestUrl() -> String?
+    func tsRequestHeader() -> [String : String]?
 }
 
-enum TSRequestMethod : String {
+public enum TSRequestMethod : String {
     case tsPost = "POST"
     case tsGet = "GET"
 }
 
-public class TSBaseRequest : TSRequestProtocol{
-    
-    var tsBaseUrl: String?
-    
-    var tsHeaderS: [String : String]?
+open class TSBaseRequest : TSRequestProtocol{
     
     required public init() { }
     
@@ -34,15 +30,24 @@ public class TSBaseRequest : TSRequestProtocol{
         return Alamofire.SessionManager(configuration: configuration)
     }()
     //请求path
-    var path: String = ""
+    open var path: String = ""
     //特定请求域名
-    var privateHost: String?
+    open var privateHost: String?
     //请求方式
-    var HTTPMethod: TSRequestMethod = .tsGet
+    open var HTTPMethod: TSRequestMethod = .tsGet
     //请求超时时间
-    var timeoutInterval: TimeInterval?
+    open var timeoutInterval: TimeInterval?
     //请求参数
-    var parameter: [String:Any]?
+    open var parameter: [String:Any]?
     //请求特殊策略域名
-    var particularHost : String?
+    open var particularHost : String?
+}
+
+public extension TSBaseRequest {
+    public func tsRequestUrl() -> String? {
+        return nil
+    }
+    public func tsRequestHeader() -> [String : String]? {
+        return nil
+    }
 }

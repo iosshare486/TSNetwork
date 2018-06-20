@@ -12,7 +12,7 @@ import Reachability
 public class TSNetworkMonitor  {
     let reachability = Reachability()
     //当前网络状态
-    var reachabilityStatus : listenerStatus {
+    public var reachabilityStatus : listenerStatus {
         set {
             
         }

@@ -11,14 +11,14 @@ import Alamofire
 import HandyJSON
 
 
-public class TSNetworkManager<T> where T: TSMoyaAddable {
+public class TSNetworkManager {
     
     public class func send<R: TSBaseRequest>(
-        _ type: R,
-        completion: @escaping ((TSBaseResponse<T>) -> ()),
+        _ api: R,
+        completion: @escaping ((TSBaseResponse) -> ()),
         error: @escaping (TSNetworkError) -> () )
     {
-        TSNetworkManager<T>().request(type, modelComletion: completion, error: error)
+        TSNetworkManager().request(api, modelComletion: completion, error: error)
     }
     
     // 用来处理只请求一次的栅栏队列
@@ -41,19 +41,22 @@ extension TSNetworkManager {
     
     private func request<R: TSBaseRequest>(
         _ type: R,
-        modelComletion: ((TSBaseResponse<T>) -> ())? = nil,
+        modelComletion: ((TSBaseResponse) -> ())? = nil,
         error: @escaping (TSNetworkError) -> () )
     {
         // 同一请求正在请求直接返回
         if isSameRequest(type) {
+            error(TSNetworkError.exception(message: "当前请求重复"))
             return
         }
         //请求url
         guard type.tsRequestUrl() != nil else {
+            error(TSNetworkError.exception(message: "未配置请求Url"))
             return
         }
-        let urlString = type.privateHost ?? type.tsRequestUrl()!.appending(type.path)
+        let urlString = type.tsRequestUrl()!.appending(type.path)
         guard let _ : URL = URL(string: urlString) else {
+            error(TSNetworkError.exception(message: "请求地址无效"))
             return
         }
         
@@ -100,7 +103,9 @@ extension TSNetworkManager {
                 self.handleSuccessResponse(response: resp.data!, modelComletion: modelComletion, error: error)
             }
             resp.result.ifFailure {
-
+                //移除请求
+                self.cleanRequest(type)
+                
                 if let errorS = resp.error as? URLError {
                     switch errorS.errorCode {
                     case -1001:
@@ -121,7 +126,7 @@ extension TSNetworkManager {
     //处理成功的返回
     private func handleSuccessResponse(
         response: Data,
-        modelComletion: ((TSBaseResponse<T>) -> ())? = nil,
+        modelComletion: ((TSBaseResponse) -> ())? = nil,
         error: @escaping (TSNetworkError) -> ())
     {
         do {
@@ -133,6 +138,8 @@ extension TSNetworkManager {
             error(TSNetworkError.serverResponse(message: message, code: code))
         } catch let TSNetworkError.jsonToDictionaryFailed(message) {
             error(TSNetworkError.jsonToDictionaryFailed(message: message))
+        } catch let TSNetworkError.jsonSerializationFailed(message) {
+            error(TSNetworkError.jsonSerializationFailed(message: message))
         } catch {
             #if Debug
             fatalError("未知错误")
@@ -141,14 +148,14 @@ extension TSNetworkManager {
     }
     
     // 处理数据
-    private func handleResponseData(data: Data) throws -> (TSBaseResponse<T>) {
+    private func handleResponseData(data: Data) throws -> (TSBaseResponse) {
         guard let jsonAny = try? JSONSerialization.jsonObject(with: data, options: []) else {
             throw TSNetworkError.jsonSerializationFailed(message: "JSON解析失败")
         }
-        let response: TSBaseResponse<T> = TSBaseResponse<T>.init(data: jsonAny)!
-        guard response.responeObject != nil else {
-            throw TSNetworkError.jsonToDictionaryFailed(message: "JSON转字典失败")
-        }
+        let response: TSBaseResponse = TSBaseResponse.init(data: jsonAny)!
+//        guard response.responeObject != nil else {
+//            throw TSNetworkError.jsonToDictionaryFailed(message: "JSON转字典失败")
+//        }
         
         if response.code != ResponseCode.successResponseStatus {
             throw TSNetworkError.serverResponse(message: response.errorMessage, code: response.code)
@@ -160,23 +167,29 @@ extension TSNetworkManager {
 // 保证同一请求同一时间只请求一次
 extension TSNetworkManager {
     private func isSameRequest<R: TSBaseRequest>(_ type: R) -> Bool {
-        let key = type.path + type.parameter!.description
-            var result: Bool!
-            barrierQueue.sync(flags: .barrier) {
-                result = fetchRequestKeys.contains(key)
-                if !result {
-                    fetchRequestKeys.append(key)
-                }
+        var key : String = type.path
+        if let parameterT = type.parameter {
+            key = key + parameterT.description
+        }
+        var result: Bool!
+        barrierQueue.sync(flags: .barrier) {
+            result = fetchRequestKeys.contains(key)
+            if !result {
+                fetchRequestKeys.append(key)
             }
+        }
         return result
     }
     
     private func cleanRequest<R: TSBaseRequest>(_ type: R) {
-            let key = type.path + type.parameter!.description
-            _ = barrierQueue.sync(flags: .barrier) {
-                if let index = fetchRequestKeys.index(of: key) {
-                    fetchRequestKeys.remove(at: index)
-                }
+        var key : String = type.path
+        if let parameterT = type.parameter {
+            key = key + parameterT.description
+        }
+        _ = barrierQueue.sync(flags: .barrier) {
+            if let index = fetchRequestKeys.index(of: key) {
+                fetchRequestKeys.remove(at: index)
             }
+        }
     }
 }

@@ -20,7 +20,7 @@ class TSCustomBaseAPI : TSBaseRequest {
         }
     }
     override func tsRequestUrl() -> String? {
-        return "http://www.zlrun.cn"
+        return "http://zlrun.cn"
     }
     override func tsRequestHeader() -> [String : String]? {
         

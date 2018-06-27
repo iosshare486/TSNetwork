@@ -30,8 +30,6 @@ open class TSBaseRequest : TSRequestProtocol{
     }()
     //请求path
     open var path: String = ""
-    //特定请求域名
-    open var privateHost: String?
     //请求方式
     open var HTTPMethod: TSRequestMethod = .tsGet
     //请求超时时间

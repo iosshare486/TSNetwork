@@ -38,15 +38,20 @@ class ViewController: UIViewController {
             view.backgroundColor = .red
             self.view.addSubview(view)
         }
-    
+        TSNetworkMonitor.shared.stopNotifier()
         let api = TSCustomDemoAPI.init()
         api.HTTPMethod = .tsGet
-        api.path = "/app_list"
-        api.parameter = ["aaa" : "bbbb"]
-        TSNetworkManager<TSDemoModel>.send(api, completion: { (response) in
-            print("\(response.jsonData)")
+        TSNetworkManager.send(api, completion: { (response) in
+            print("\(response.jsonObject)")
+            let respT : [Any] = response.jsonObject["resp"] as! [Any]
+            var Arr : [TSDemoItemModel] = TSBaseResponse.ts_deserializeModelArrFrom(arr: respT)
+            
         }) { (error) in
             print("\(error) ")
+            let code = error.code
+            let message  = error.message
+            let urlError = error.error
+            let netType = error.networkType
             if error.networkType == listenerStatus.tsNoNet {
                 
             } else if error.networkType == listenerStatus.tsFiwi {

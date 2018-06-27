@@ -9,13 +9,11 @@ api.parameter = ["cmd" : "get_home_operate_info"] 请求参数
 api.path = "/get_home_operate_info" 请求Path
 api.timeoutInterval = 10 请求超时时间
 可选配置 基本上用不到
-api.privateHost 可定请求域名
 api.particularHost 配置非默认网络策略域名 （pinCertificates 策略 ，validateCertificateChain为true，validateHost为true）
 2.请求网络
-TSNetworkManager<MJTSOmModel>.send(api, completion: { (resp) in
-    let model = resp.responeObject 请求配置的模型
-	 let jsonObject = resp.jsonData 请求返回的jsonObject
-	 
+TSNetworkManager.send(api, completion: { (resp) in
+	 let jsonObject = resp.jsonObject 请求返回的jsonObject
+	 在此可以数据模型转换
 }) { (error) in
     let code = error.code  错误Code码 ，包括网络和业务返回Code
     let message  = error.message 错误信息
@@ -55,6 +53,26 @@ TSNetworkMonitor.shared.stopNotifier()
       	}
     }
 	}
+### 数据转模型API
+<pre>
+	TSBaseResponse {
+		//通过dict转Model
+    public class func ts_deserializeModelFrom<T : TSMoyaAddable> (dict : [String : Any]) -> T 
+    
+    public class func ts_deserializeModelFrom<T : TSMoyaAddable> (dict : NSDictionary) -> T
+    
+    //通过jsonString转Model
+    public class func ts_deserializeModelFrom<T : TSMoyaAddable> (json : String) -> T
+    
+    //通过数组转模型数组
+    public class func ts_deserializeModelArrFrom<T : TSMoyaAddable> (arr : [Any]) -> [T]
+    
+    public class func ts_deserializeModelArrFrom<T : TSMoyaAddable> (arr : NSArray) -> [T]
+    
+    public class func ts_deserializeModelArrFrom<T : TSMoyaAddable> (jsonString : String) -> [T]
+	}
+</pre>
+
 ### 模型配置使用
 	创建模型，可为Class或是Struct，需要准守TSMoyaAddable协议
 	注意事项： 如果想重写协议定义API，需要创建模型为Class

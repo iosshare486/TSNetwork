@@ -18,10 +18,15 @@ public protocol TSMoyaAddable : HandyJSON {
 public class TSBaseResponse{
 
     public var code: Int {
-        guard let temp = jsonObject["code"] as? Int else {
-            return -1
+        if let temp = jsonObject["code"] {
+            if let codeInt = temp as? Int {
+                return codeInt
+            }
+            if let codeString = temp as? String {
+                return Int(codeString) ?? -1
+            }
         }
-        return temp
+        return -1
     }
     
     public var errorMessage: String? {

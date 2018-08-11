@@ -113,7 +113,7 @@ extension TSNetworkManager {
                     case -1009:
                         error(TSNetworkError.noNetworkResponse(message: "无法连接到网络", code: errorS.code.rawValue))
                     default:
-                        error(TSNetworkError.networkResponse(message: "当前网络不稳定，请重试", code: errorS.code.rawValue, error: errorS))
+                        error(TSNetworkError.respResponse(message: "当前网络不稳定，请重试", code: errorS.code.rawValue, error: errorS))
                         break
                     }
                 } else {

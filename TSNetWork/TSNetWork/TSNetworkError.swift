@@ -65,7 +65,7 @@ public extension TSNetworkError {
     
     public var error : URLError? {
         switch self {
-        case let .networkResponse(_, _,error):
+        case let .respResponse(_, _,error):
             return error
         default:
             return nil

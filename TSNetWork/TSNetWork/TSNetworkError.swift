@@ -27,7 +27,7 @@ public enum TSNetworkError: Error  {
     // json转字典失败
     case jsonToDictionaryFailed(message: String)
     // 请求返回的错误
-    case networkResponse(message: String?, code: Int, error: URLError)
+    case respResponse(message: String?, code: Int, error: URLError)
     // 服务器返回的错误
     case serverResponse(message: String?, code: Int)
     // NoNetworkError
@@ -39,7 +39,11 @@ public enum TSNetworkError: Error  {
 public extension TSNetworkError {
     public var message: String? {
         switch self {
+        case let .respResponse(msg, _, _):
+            return msg
         case let .serverResponse(msg, _):
+            return msg
+        case let .noNetworkResponse(msg, _):
             return msg
         default:
             return nil
@@ -49,6 +53,10 @@ public extension TSNetworkError {
     public var code: Int {
         switch self {
         case let .serverResponse(_, code):
+            return code
+        case let .respResponse(_, code, _):
+            return code
+        case let .noNetworkResponse(_, code):
             return code
         default:
             return -1

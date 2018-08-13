@@ -45,6 +45,8 @@ public extension TSNetworkError {
             return msg
         case let .noNetworkResponse(msg, _):
             return msg
+        case let .exception(msg):
+            return msg
         default:
             return nil
         }

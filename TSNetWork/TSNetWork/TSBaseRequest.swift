@@ -46,5 +46,22 @@ open class TSBaseRequest : TSRequestProtocol{
     open func tsRequestHeader() -> [String : String]? {
         return nil
     }
-    
+    //取消请求
+    open func tsCancelRequest () {
+        //请求url
+        guard self.tsRequestUrl() != nil else {
+            return
+        }
+        TSBaseRequest.sharedSessionManager.session.getAllTasks { [weak self] (tasks) in
+            let urlString = self?.tsRequestUrl()!.appending(self?.path ?? "")
+            
+            tasks.forEach({ (task) in
+                if task.currentRequest?.url?.lastPathComponent == urlString {
+                    task.cancel()
+                }
+            })
+
+        }
+        
+    }
 }

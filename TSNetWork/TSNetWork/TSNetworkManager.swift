@@ -112,6 +112,9 @@ extension TSNetworkManager {
                         error(TSNetworkError.serverResponse(message: "请求超时", code: errorS.code.rawValue))
                     case -1009:
                         error(TSNetworkError.noNetworkResponse(message: "无法连接到网络", code: errorS.code.rawValue))
+                    case -999:
+                        //请求取消
+                        error(TSNetworkError.serverResponse(message: "", code: errorS.code.rawValue))
                     default:
                         error(TSNetworkError.respResponse(message: "当前网络不稳定，请重试", code: errorS.code.rawValue, error: errorS))
                         break

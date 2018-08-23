@@ -47,6 +47,7 @@ open class TSBaseRequest : TSRequestProtocol{
         return nil
     }
     //取消请求
+    //取消请求
     open func tsCancelRequest () {
         //请求url
         guard self.tsRequestUrl() != nil else {
@@ -56,11 +57,17 @@ open class TSBaseRequest : TSRequestProtocol{
             let urlString = self?.tsRequestUrl()!.appending(self?.path ?? "")
             
             tasks.forEach({ (task) in
-                if task.currentRequest?.url?.lastPathComponent == urlString {
-                    task.cancel()
+                
+                if let urlPath = task.currentRequest?.url?.path {
+                    
+                    if urlString!.contains(urlPath) {
+                        
+                        task.cancel()
+                    }
+                    
                 }
             })
-
+            
         }
         
     }

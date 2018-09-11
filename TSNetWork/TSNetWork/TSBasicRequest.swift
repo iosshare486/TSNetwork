@@ -4,15 +4,14 @@
 //
 //  Created by 小铭 on 2018/9/10.
 //  Copyright © 2018年 caiqr. All rights reserved.
-//
+//  拓展网络请求创建方式 如果弃用可用TSBaseRequest
 
 import Foundation
-import Alamofire
 
 open class TSBasicRequest<T : TSMoyaAddable> : TSBaseRequest {
     
     required public init() {}
-    
+    //数据解析方法 可子类覆盖实现
     open func configResp (_ jsonObject : [String : Any]) -> T {
         return TSBaseResponse.ts_deserializeModelFrom(dict: jsonObject) as T
     }
@@ -29,13 +28,4 @@ open class TSBasicRequest<T : TSMoyaAddable> : TSBaseRequest {
             }
         }, error: error)
     }
-}
-
-extension TSBasicRequest {
-    //默认请求session NetworkManager内根据BaseRequest修改
-//    static var sharedSessionManager: Alamofire.SessionManager = {
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = 10
-//        return Alamofire.SessionManager(configuration: configuration)
-//    }()
 }

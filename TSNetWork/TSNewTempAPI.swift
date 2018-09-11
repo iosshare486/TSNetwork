@@ -8,9 +8,14 @@
 
 import UIKit
 
-class TSNewTempAPI: TSBasicRequest<TSDemoBaseModel<TSDemoModel>> {
-    override func configResp(_ jsonObject: [String : Any]) -> TSDemoBaseModel<TSDemoModel> {
-        let model = TSBaseResponse.ts_deserializeModelFrom(dict: jsonObject) as TSDemoBaseModel<TSDemoModel>
-        return model
+class TSNewTempAPI<T : TSMoyaAddable>: TSNormalBaseRequest<T> {
+    override var path: String {
+        set { }
+        get {
+            return "/api"
+        }
+    }
+    override func tsRequestUrl() -> String? {
+        return ""
     }
 }

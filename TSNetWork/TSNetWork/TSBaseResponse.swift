@@ -21,16 +21,23 @@ public class TSBaseResponse{
         if let temp = jsonObject["code"] {
             if let codeInt = temp as? Int {
                 return codeInt
+            } else {
+                debugPrint("json Code 不是Int类型")
             }
             if let codeString = temp as? String {
                 return Int(codeString) ?? -1
+            } else {
+                debugPrint("json Code 不是String类型")
             }
+        } else {
+            debugPrint("json Code 为空")
         }
         return -1
     }
     
     public var errorMessage: String? {
         guard let temp = jsonObject["msg"] as? String else {
+            debugPrint("json Msg 为空")
             return ""
         }
         return temp
@@ -42,6 +49,7 @@ public class TSBaseResponse{
     }
     init?(data: Any) {
         guard let temp = data as? [String : Any] else {
+            debugPrint("json 格式错误")
             return nil
         }
         self.jsonObject = temp

@@ -13,6 +13,13 @@ import HandyJSON
 
 public class TSNetworkManager {
     
+    //默认请求session NetworkManager内根据BaseRequest修改
+    static var sharedSessionManager: Alamofire.SessionManager = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        return Alamofire.SessionManager(configuration: configuration)
+    }()
+    
     public class func send<R: TSBaseRequest>(
         _ api: R,
         completion: @escaping ((TSBaseResponse) -> ()),
@@ -76,6 +83,8 @@ extension TSNetworkManager {
             }
         }
         
+        debugPrint("当前请求头\(afHeaders)")
+        
         //设置请求超时时间
         if let outTime = type.timeoutInterval {
             let config = URLSessionConfiguration.default
@@ -92,10 +101,11 @@ extension TSNetworkManager {
             
             let serverTruckPolicyManager = ServerTrustPolicyManager(policies: serverTruckPolicies)
             
-            TSBaseRequest.sharedSessionManager = Alamofire.SessionManager(configuration: config, delegate: SessionManager.default.delegate, serverTrustPolicyManager: serverTruckPolicyManager)
+            TSNetworkManager.sharedSessionManager = Alamofire.SessionManager(configuration: config, delegate: SessionManager.default.delegate, serverTrustPolicyManager: serverTruckPolicyManager)
         }
+        debugPrint("请求参数\(type.parameter?.description)")
         //开始请求
-        TSBaseRequest.sharedSessionManager.request(urlString, method: HTTPMethod(rawValue: type.HTTPMethod.rawValue)!, parameters: type.parameter ?? nil, encoding: URLEncoding.default, headers: afHeaders).validate(statusCode: 200..<300).responseJSON(completionHandler: { (resp) in
+        TSNetworkManager.sharedSessionManager.request(urlString, method: HTTPMethod(rawValue: type.HTTPMethod.rawValue)!, parameters: type.parameter ?? nil, encoding: URLEncoding.default, headers: afHeaders).validate(statusCode: 200..<300).responseJSON(completionHandler: { (resp) in
             resp.result.ifSuccess {
                 //移除请求
                 self.cleanRequest(type)
@@ -114,12 +124,14 @@ extension TSNetworkManager {
                         error(TSNetworkError.noNetworkResponse(message: "无法连接到网络", code: errorS.code.rawValue))
                     case -999:
                         //请求取消
+                        debugPrint("请求取消")
                         error(TSNetworkError.serverResponse(message: "", code: errorS.code.rawValue))
                     default:
                         error(TSNetworkError.respResponse(message: "当前网络不稳定，请重试", code: errorS.code.rawValue, error: errorS))
                         break
                     }
                 } else {
+                    debugPrint("请求error为空，请检查请求参数")
                     error(TSNetworkError.exception(message: "当前网络不稳定，请重试"))
                 }
             }

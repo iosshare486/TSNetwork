@@ -9,57 +9,25 @@
 import Foundation
 import Alamofire
 
-open class TSBasicRequest<T : TSMoyaAddable> {
+open class TSBasicRequest<T : TSMoyaAddable> : TSBaseRequest {
     
     required public init() {}
     
-    //请求path
-    open var path: String = ""
-    //请求方式
-    open var HTTPMethod: TSRequestMethod = .tsGet
-    //请求超时时间
-    open var timeoutInterval: TimeInterval?
-    //请求参数
-    open var parameter: [String:Any]?
-    //请求特殊策略域名
-    open var particularHost : String?
-    //配置请求URL
-    open func tsRequestUrl() -> String? {
-        return nil
-    }
-    //配置请求头
-    open func tsRequestHeader() -> [String : String]? {
-        return nil
+    open func configResp (_ jsonObject : [String : Any]) -> T {
+        return TSBaseResponse.ts_deserializeModelFrom(dict: jsonObject) as T
     }
     
     //开始请求
-    open func tsStartRequest () {
-        
-    }
-    
-    //取消请求
-    open func tsCancelRequest () {
-        //请求url
-        guard self.tsRequestUrl() != nil else {
-            return
-        }
-        TSNetworkManager.sharedSessionManager.session.getAllTasks { [weak self] (tasks) in
-            let urlString = self?.tsRequestUrl()!.appending(self?.path ?? "")
-            
-            tasks.forEach({ (task) in
-                
-                if let urlPath = task.currentRequest?.url?.path {
-                    
-                    if urlString!.contains(urlPath) {
-                        
-                        task.cancel()
-                    }
-                    
-                }
-            })
-            
-        }
-        
+    open func tsStartRequest (_ completion: @escaping ((T) -> ()),
+                              _ error: @escaping (TSNetworkError) -> ()) {
+        TSNetworkManager.send(self, completion: { [weak self] (resp) in
+            if let tempT = self?.configResp(resp.jsonObject) {
+                completion(tempT)
+            } else {
+                debugPrint("数据转模型失败")
+                completion(T())
+            }
+        }, error: error)
     }
 }
 

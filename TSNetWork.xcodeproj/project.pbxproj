@@ -10,6 +10,7 @@
 		8FC7B562C678CAAB5BC566CF /* Pods_TSNetWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDDCD2BF32B2CEC6B9DE2BF /* Pods_TSNetWork.framework */; };
 		B216424920D3B4CF0015A305 /* TSNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B216424820D3B4CE0015A305 /* TSNetworkMonitor.swift */; };
 		B25E44A02146A4D7002D2F45 /* TSBasicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25E449F2146A4D7002D2F45 /* TSBasicRequest.swift */; };
+		B25E44A221476E10002D2F45 /* TSNewTempAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25E44A121476E10002D2F45 /* TSNewTempAPI.swift */; };
 		B27A5D2620C532CE00577178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D2520C532CE00577178 /* AppDelegate.swift */; };
 		B27A5D2820C532CE00577178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27A5D2720C532CE00577178 /* ViewController.swift */; };
 		B27A5D2B20C532CE00577178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27A5D2920C532CE00577178 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		B216424820D3B4CE0015A305 /* TSNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNetworkMonitor.swift; sourceTree = "<group>"; };
 		B25E449F2146A4D7002D2F45 /* TSBasicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBasicRequest.swift; sourceTree = "<group>"; };
+		B25E44A121476E10002D2F45 /* TSNewTempAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNewTempAPI.swift; sourceTree = "<group>"; };
 		B27A5D2220C532CE00577178 /* TSNetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSNetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27A5D2520C532CE00577178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27A5D2720C532CE00577178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				B27A5D5320C5330B00577178 /* TSNetWork */,
 				B27A5D2520C532CE00577178 /* AppDelegate.swift */,
 				B27A5D6020C930A300577178 /* TSDemoAPI.swift */,
+				B25E44A121476E10002D2F45 /* TSNewTempAPI.swift */,
 				B2B9281F20CBC94600BD8171 /* TSCustomDemoAPI.swift */,
 				B27A5D2720C532CE00577178 /* ViewController.swift */,
 				B27A5D6420C9351100577178 /* TSDemoModel.swift */,
@@ -370,6 +373,7 @@
 				B27A5D5520C5340000577178 /* TSNetworkManager.swift in Sources */,
 				B27A5D6120C930A300577178 /* TSDemoAPI.swift in Sources */,
 				B27A5D5920C5738700577178 /* TSNetworkError.swift in Sources */,
+				B25E44A221476E10002D2F45 /* TSNewTempAPI.swift in Sources */,
 				B2B9282020CBC94600BD8171 /* TSCustomDemoAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

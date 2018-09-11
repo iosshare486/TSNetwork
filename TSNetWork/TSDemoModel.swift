@@ -8,6 +8,14 @@
 
 import UIKit
 
+struct TSDemoBaseModel<T : TSMoyaAddable> : TSMoyaAddable {
+    var code : Int?
+    var resp : Array<T>?
+    var msg : String?
+}
+
+
+
 struct TSDemoModel : TSMoyaAddable {
     var respObject: Any? {
         return "1234"

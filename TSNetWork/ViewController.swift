@@ -11,10 +11,11 @@ import Reachability
 
 var reachability: Reachability!
 class ViewController: UIViewController {
-    
+    var customAPI = TSBasicRequest<TSDemoModel>()
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        customAPI.parameter = ["adb" : "ddd"]
         
         // Do any additional setup after loading the view, typically from a nib.
         

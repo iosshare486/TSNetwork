@@ -9,8 +9,8 @@
 import UIKit
 
 open class TSNormalRequestBaseModel<T : TSMoyaAddable>: TSMoyaAddable {
-    var code : Int?
-    var msg : String?
-    var resp : Array<T>?
+    open var code : Int?
+    open var msg : String?
+    open var resp : Array<T>?
     required public init () { }
 }

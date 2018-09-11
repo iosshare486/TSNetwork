@@ -89,7 +89,7 @@ extension TSNetworkManager {
         if let outTime = type.timeoutInterval {
             let config = URLSessionConfiguration.default
             config.timeoutIntervalForRequest = outTime   // 秒
-            TSBaseRequest.sharedSessionManager = Alamofire.SessionManager(configuration: config)
+            TSNetworkManager.sharedSessionManager = Alamofire.SessionManager(configuration: config)
         }
         //设置特殊域名证书策略
         if let particularHostString = type.particularHost {

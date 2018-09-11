@@ -43,7 +43,7 @@ open class TSBasicRequest<T : TSMoyaAddable> {
         guard self.tsRequestUrl() != nil else {
             return
         }
-        TSBaseRequest.sharedSessionManager.session.getAllTasks { [weak self] (tasks) in
+        TSNetworkManager.sharedSessionManager.session.getAllTasks { [weak self] (tasks) in
             let urlString = self?.tsRequestUrl()!.appending(self?.path ?? "")
             
             tasks.forEach({ (task) in

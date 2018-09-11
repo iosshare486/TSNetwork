@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TSNormalBaseRequest<T : TSMoyaAddable>: TSBasicRequest<TSNormalRequestBaseModel<T>> {
-    override var HTTPMethod: TSRequestMethod {
+open class TSNormalBaseRequest<T : TSMoyaAddable>: TSBasicRequest<TSNormalRequestBaseModel<T>> {
+    override open var HTTPMethod: TSRequestMethod {
         get {
             return .tsPost
         }

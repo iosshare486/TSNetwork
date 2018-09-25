@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 默认通用请求基础类，泛型需要子类传入，或是创建时指定
 open class TSNormalBaseRequest<T : TSMoyaAddable>: TSBasicRequest<TSNormalRequestBaseModel<T>> {
     override open var HTTPMethod: TSRequestMethod {
         get {

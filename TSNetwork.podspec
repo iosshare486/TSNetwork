@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TSNetwork"
-  s.version      = "1.0.5"
+  s.version      = "2.0.0"
   s.summary      = "TSNetwork"
 
   # This description is used to generate tags and improve search results.
@@ -130,12 +130,12 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  s.swift_version = '4.0'
+  s.swift_version = '4.2'
 
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "Alamofire", "~> 4.7.2"
-  s.dependency "HandyJSON", "~> 4.1.1"
+  s.dependency "Alamofire"
+  s.dependency "HandyJSON"
 
 end

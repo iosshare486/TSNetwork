@@ -38,6 +38,9 @@ open class TSBaseRequest : TSRequestProtocol{
     open var parameter: [String:Any]?
     //请求特殊策略域名
     open var particularHost : String?
+    
+    open var cannotConnectNetWorkMsg: String = "无法连接到网络"
+    
     //配置请求URL
     open func tsRequestUrl() -> String? {
         return nil

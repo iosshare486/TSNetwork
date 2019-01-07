@@ -41,6 +41,10 @@ open class TSBaseRequest : TSRequestProtocol{
     
     open var cannotConnectNetWorkMsg: String = "无法连接到网络"
     
+    open var requestTimeOutMsg: String = "请求超时"
+    
+    open var noNetWordPleaseTryAgainMsg: String = "网络异常，请重试"
+    
     //配置请求URL
     open func tsRequestUrl() -> String? {
         return nil

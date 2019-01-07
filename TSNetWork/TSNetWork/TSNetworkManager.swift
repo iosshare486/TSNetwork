@@ -119,7 +119,7 @@ extension TSNetworkManager {
                 if let errorS = resp.error as? URLError {
                     switch errorS.errorCode {
                     case -1001:
-                        error(TSNetworkError.serverResponse(message: "请求超时", code: errorS.code.rawValue))
+                        error(TSNetworkError.serverResponse(message: type.requestTimeOutMsg, code: errorS.code.rawValue))
                     case -1009:
                         error(TSNetworkError.noNetworkResponse(message: type.cannotConnectNetWorkMsg, code: errorS.code.rawValue))
                     case -999:
@@ -127,12 +127,12 @@ extension TSNetworkManager {
                         debugPrint("请求取消")
                         error(TSNetworkError.serverResponse(message: "", code: errorS.code.rawValue))
                     default:
-                        error(TSNetworkError.respResponse(message: "当前网络不稳定，请重试", code: errorS.code.rawValue, error: errorS))
+                        error(TSNetworkError.respResponse(message: type.noNetWordPleaseTryAgainMsg, code: errorS.code.rawValue, error: errorS))
                         break
                     }
                 } else {
                     debugPrint("请求error为空，请检查请求参数")
-                    error(TSNetworkError.exception(message: "当前网络不稳定，请重试"))
+                    error(TSNetworkError.exception(message: type.noNetWordPleaseTryAgainMsg))
                 }
             }
         })
